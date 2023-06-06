@@ -1,0 +1,27 @@
+{
+  "name": "curd_sach_nodejs",
+  "version": "1.0.0",
+  "description": "Xay dung CURD voi Nodejs va Express theo mo hinh MVC",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "curd",
+    "nodejs",
+    "express"
+  ],
+  "author": "Nam Chu Minh",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.3.3",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.32.0"
+  }
+}
