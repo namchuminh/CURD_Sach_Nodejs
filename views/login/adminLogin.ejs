@@ -10,7 +10,11 @@
 <body>
     <form class="login" method="POST">
         <h2>Xin chào, Admin!</h2>
-        <p>Vui lòng đăng nhập!</p>
+        <% if(message){ %>
+            <p><%= message %></p>
+        <% }else{ %>
+            <p>Vui lòng đăng nhập!</p>
+        <% } %>
         <input type="text" placeholder="Email" name="email" />
         <input type="password" placeholder="Mật khẩu" name="password" />
         <input type="submit" value="Đăng Nhập" />

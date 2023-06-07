@@ -30,11 +30,9 @@ passport.use(new LocalStrategy({
   User.findOne({ where: { email: email } })
     .then(user => {
       if (!user) {
-        console.log("Email koo ton tại")
         return done(null, false, { message: 'Email không tồn tại!' });
       }
       if (user.matKhau != md5(password)) {
-        console.log(user.matKhau)
         return done(null, false, { message: 'Sai mật khẩu!' });
       }
       return done(null, user);
