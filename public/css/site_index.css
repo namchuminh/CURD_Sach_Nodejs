@@ -1,0 +1,46 @@
+body {
+    background-color: #e9ecef !important;
+  }
+  
+  #mainPage {
+    min-height: 100vh !important;
+  }
+  
+  .card-body h5 {
+    font-weight: bold;
+    color: #6f1e51;
+  }
+  
+  #products h2 {
+    color: #1b1464;
+  }
+  
+  .price::after {
+    content: " \20BA";
+  }
+  
+  .price {
+    background-color: rgba(18, 137, 167, 0.6);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5%;
+    padding: 2px;
+  }
+  
+  .card-text {
+    color: #a4b0be;
+  }
+  
+  #aboutUs > * {
+    background-color: #e9ecef !important;
+  }
+  
+  #aboutUs h5 {
+    color: orange;
+  }
+  
+  #aboutUs h1 {
+    color: #5758bb;
+  }
+  

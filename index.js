@@ -53,6 +53,12 @@ passport.deserializeUser((user, done) => {
   done(null, user)
 })
 
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
+
 
 // Connect to database
 const sequelize = require('./config/db.js');

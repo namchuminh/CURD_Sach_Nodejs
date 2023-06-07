@@ -5,6 +5,6 @@ const loginController = require('../controllers/loginController.js');
 
 
 router.get('/quan-ly', loginController.logout);
-
+router.get('/', loginController.userLogout);
 
 module.exports = router;
