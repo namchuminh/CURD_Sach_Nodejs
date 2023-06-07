@@ -5,6 +5,56 @@ const app = express();
 const route = require("./routes/index.js")
 const path = require('path');
 const morgan = require('morgan');
+const session = require('express-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+var md5 = require('md5');
+
+const User = require("./models/userModel.js");
+
+// Khởi tạo session
+app.use(session({
+  secret: 'abcdef',
+  resave: false,
+  saveUninitialized: true
+}))
+
+// Khởi tạo passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+}, (email, password, done) => {
+  User.findOne({ where: { email: email } })
+    .then(user => {
+      if (!user) {
+        console.log("Email koo ton tại")
+        return done(null, false, { message: 'Email không tồn tại!' });
+      }
+      if (user.matKhau != md5(password)) {
+        console.log(user.matKhau)
+        return done(null, false, { message: 'Sai mật khẩu!' });
+      }
+      return done(null, user);
+    })
+    .catch(err => {
+      return done(err);
+    });
+}));
+
+
+// Lưu thông tin người dùng vào session
+passport.serializeUser((user, done) => {
+  done(null, user)
+})
+
+// Lấy thông tin người dùng từ session
+passport.deserializeUser((user, done) => {
+  done(null, user)
+})
+
 
 // Connect to database
 const sequelize = require('./config/db.js');
