@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="row questions bg-light p-3">
-                    <div class="col-md-1 icon">
+                    <div class="col-md-1 icon" style="width: 100%;">
                         <i class="fa-brands fa-rocketchat questions-icon"></i>
                     </div>
                     <div class="col-md-11 text">
@@ -91,18 +91,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form>
+                        <form method="POST" action="<%= baseUrl %>/san-pham/binh-luan/<%= book.dataValues.id %>">
                             <h3 class="pull-left">Bình Luận Mới</h3>
                             <% if (user) { %>
-                                <button type="submit" class="btn btn-primary pull-right">Đăng</button>
                                 <fieldset>
                                     <div class="row">
                                         <div class="form-group">
                                             <textarea class="form-control" id="message" placeholder="Bình luận"
-                                                required=""></textarea>
+                                                required="" name="noiDung"></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
+                                <br>
+                                <button type="submit" class="btn btn-primary pull-right">Bình Luận</button>
+                                <br>
+                                <br>
                             <% } else { %>
                                 <a href="<%= baseUrl %>/dang-nhap" class="btn btn-primary pull-right">Đăng Nhập Để Bình Luận</a>
                                 <br>
@@ -110,10 +113,13 @@
                             <% } %>
                         </form>
                         <div class="media">
-                            <div class="media-body">
-                                <h5 class="media-heading">Nguyễn Văn A</h5>
-                                <p>aa</p>
-                            </div>
+                            <% comments.forEach((comment,index) => { %>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><%= comment.user.hoTen %></h5>
+                                    <p><%= comment.noiDung %></p>
+                                </div>
+                                <br>
+                            <% }) %>
                         </div>
                     </div>
                 </div>
