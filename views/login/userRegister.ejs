@@ -49,6 +49,12 @@
                     <h2>Đăng Ký - Tài Khoản</h2>
                 </div>
                 <form method="POST">
+                    <% if(errorMessage){ %>
+                        <p style="font-size: 16px; color: red; margin-top: -20px;"><%= errorMessage %></p>
+                    <% } %>
+                    <% if(successMessage){ %>
+                        <p style="font-size: 16px; color: blueviolet; margin-top: -20px;"><%= successMessage %> <a href="<%= baseUrl %>/dang-nhap/">Đăng Nhập?</a></p>
+                    <% } %>
                     <div class="input-item">
                         <input type="text" placeholder="Họ tên" name="hoTen">
                     </div>
