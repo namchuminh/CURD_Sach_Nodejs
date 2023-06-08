@@ -3,6 +3,8 @@ const loginRoute = require("./login");
 const homeRoute = require("./home");
 const logout = require("./logout");
 const product = require("./product")
+const order = require("./orders")
+const ordered = require("./ordered")
 const auth = require("../lib/auth")
 
 
@@ -11,6 +13,8 @@ function route(app){
     app.use("/dang-nhap", auth.isLogged, loginRoute);
     app.use("/dang-xuat", logout);
     app.use("/san-pham", product);
+    app.use("/dat-hang", auth.authorizedUser, order);
+    app.use("/don-hang", auth.authorizedUser, ordered);
     app.use("/", homeRoute);    
 }
 
